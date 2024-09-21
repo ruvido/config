@@ -1,0 +1,18 @@
+directory: ~/beets
+library: ~/.config/beets/music.db
+# normalize:
+#   artist: true
+plugins: fetchart embedart lyrics lastgenre chroma fromfilename
+# chroma:
+#    auto: no
+
+paths:
+  default: Albums/%title{$albumartist}/$album ($year)/%title{$albumartist} - $title
+  # singleton: Singles/$genre/$albumartist - $title
+  # singleton: Singles/%title{$artist_sort}/%title{$artist} - $title
+  # singleton: Singles/%title{$artist}/%title{$artist} - $title
+  singleton: Singles/%title{$albumartist}/%title{$artist} - $title
+  comp: Compilations/$genre/$album/$track - $title
+  albumtype:soundtrack: Soundtracks/$album ($year)/$track - $title
+
+

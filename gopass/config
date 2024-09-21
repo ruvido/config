@@ -1,0 +1,4 @@
+[mounts]
+	path = .pass
+[recipients]
+	hash = d2b62cfb29ddae88b573064ef5f35de48ee870f39743e7cdfe4abe2c74ea4167

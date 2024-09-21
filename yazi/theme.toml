@@ -1,0 +1,8 @@
+# [status]
+# separator_open  = ""
+# separator_close = ""
+
+[icon]
+dirs = [
+	# { name = "podcast", text = "x", fg_dark = "#563d7c", fg_light = "#563d7c" },
+]

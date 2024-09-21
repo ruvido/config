@@ -1,0 +1,3 @@
+xkb_symbols "custom_mapping" {
+    key <I360>  { [ XF86Launch1 ] };
+};
