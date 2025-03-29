@@ -38,6 +38,9 @@
 /home/ruvido/music/100% Green Day/Green Day - Working Class Hero.mp3
 /home/ruvido/music/Loved Tracks/07. Hillsong In Italiano - Oceani (Dove I Piedi Falliscono).mp3
 /home/ruvido/music/Loved Tracks/01. Lidia Schillaci - Il Cuore che non ho.mp3
+/home/ruvido/music/Soundgarden/Soundgarden - Black hole sun.mp3
+/home/ruvido/music/Red hot chili peppers/Red hot chili peppers - Californication.mp3
+/home/ruvido/music/Red hot chili peppers/Red hot chili peppers - Dani california .mp3
 /home/ruvido/music/Loved Tracks/01. The Neighbourhood - Sweater Weather.mp3
 /home/ruvido/music/Loved Tracks/02. Fabrizio De André - Don Raffaè.mp3
 /home/ruvido/music/Loved Tracks/03. Franco Califano - Tutto il resto e' noia.mp3
@@ -96,3 +99,4 @@
 /home/ruvido/music/Loved Tracks/57. Madonna - Beautiful Stranger.mp3
 /home/ruvido/music/Loved Tracks/58. The White Stripes - Seven Nation Army.mp3
 /home/ruvido/music/Loved Tracks/59. The Clash - Should I Stay or Should I Go (Remastered).mp3
+/home/ruvido/music/The cranberries/The cranberries - Zombie.mp3

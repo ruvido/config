@@ -1,0 +1,99 @@
+{
+ "Week": "2024-12-30",
+ "LastWeek": "",
+ "X": 0.890511611555298,
+ "Programs": [
+  {
+   "Program": "cmd/asm",
+   "Version": "go1.23.1",
+   "GoVersion": "go1.23.1",
+   "GOOS": "linux",
+   "GOARCH": "amd64",
+   "Counters": {
+    "asm/flag:D": 7,
+    "asm/flag:I": 7,
+    "asm/flag:gensymabis": 2,
+    "asm/flag:o": 7,
+    "asm/flag:p": 7,
+    "asm/flag:trimpath": 7,
+    "asm/invocations": 7
+   },
+   "Stacks": {}
+  },
+  {
+   "Program": "cmd/cgo",
+   "Version": "go1.23.1",
+   "GoVersion": "go1.23.1",
+   "GOOS": "linux",
+   "GOARCH": "amd64",
+   "Counters": {},
+   "Stacks": {}
+  },
+  {
+   "Program": "cmd/compile",
+   "Version": "go1.23.1",
+   "GoVersion": "go1.23.1",
+   "GOOS": "linux",
+   "GOARCH": "amd64",
+   "Counters": {
+    "compile/flag:asmhdr": 2,
+    "compile/flag:buildid": 38,
+    "compile/flag:c": 38,
+    "compile/flag:complete": 36,
+    "compile/flag:goversion": 38,
+    "compile/flag:importcfg": 38,
+    "compile/flag:lang": 38,
+    "compile/flag:nolocalimports": 38,
+    "compile/flag:o": 38,
+    "compile/flag:p": 38,
+    "compile/flag:pack": 38,
+    "compile/flag:std": 2,
+    "compile/flag:symabis": 2,
+    "compile/flag:trimpath": 38,
+    "compile/invocations": 42
+   },
+   "Stacks": {}
+  },
+  {
+   "Program": "cmd/go",
+   "Version": "go1.23.1",
+   "GoVersion": "go1.23.1",
+   "GOOS": "linux",
+   "GOARCH": "amd64",
+   "Counters": {
+    "go/build/flag:o": 1,
+    "go/buildcache/hit": 151,
+    "go/buildcache/miss": 39,
+    "go/buildcache/stdlib-recompiled": 1,
+    "go/goroot:usr-lib-go": 1,
+    "go/invocations": 1,
+    "go/mode:module": 1,
+    "go/platform/host/linux/major-version:6": 1,
+    "go/platform/host/linux/version:6-6": 1,
+    "go/platform/target/goamd64:v1": 1,
+    "go/platform/target/goarch:amd64": 1,
+    "go/platform/target/goos:linux": 1,
+    "go/subcommand:build": 1
+   },
+   "Stacks": {}
+  },
+  {
+   "Program": "cmd/link",
+   "Version": "go1.23.1",
+   "GoVersion": "go1.23.1",
+   "GOOS": "linux",
+   "GOARCH": "amd64",
+   "Counters": {
+    "link/flag:X": 1,
+    "link/flag:buildid": 1,
+    "link/flag:buildmode": 1,
+    "link/flag:extld": 1,
+    "link/flag:importcfg": 1,
+    "link/flag:o": 1,
+    "link/invocations": 2
+   },
+   "Stacks": {}
+  }
+ ],
+ "Config": "v0.0.0-0"
+}

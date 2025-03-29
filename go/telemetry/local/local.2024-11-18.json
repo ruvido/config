@@ -1,0 +1,88 @@
+{
+ "Week": "2024-11-18",
+ "LastWeek": "",
+ "X": 0.39096564754019814,
+ "Programs": [
+  {
+   "Program": "cmd/asm",
+   "Version": "go1.23.1",
+   "GoVersion": "go1.23.1",
+   "GOOS": "linux",
+   "GOARCH": "amd64",
+   "Counters": {},
+   "Stacks": {}
+  },
+  {
+   "Program": "cmd/cgo",
+   "Version": "go1.23.1",
+   "GoVersion": "go1.23.1",
+   "GOOS": "linux",
+   "GOARCH": "amd64",
+   "Counters": {},
+   "Stacks": {}
+  },
+  {
+   "Program": "cmd/compile",
+   "Version": "go1.23.1",
+   "GoVersion": "go1.23.1",
+   "GOOS": "linux",
+   "GOARCH": "amd64",
+   "Counters": {
+    "compile/flag:buildid": 23,
+    "compile/flag:c": 23,
+    "compile/flag:complete": 23,
+    "compile/flag:dwarf": 6,
+    "compile/flag:goversion": 23,
+    "compile/flag:importcfg": 23,
+    "compile/flag:lang": 23,
+    "compile/flag:nolocalimports": 23,
+    "compile/flag:o": 23,
+    "compile/flag:p": 23,
+    "compile/flag:pack": 23,
+    "compile/flag:trimpath": 23,
+    "compile/invocations": 119
+   },
+   "Stacks": {}
+  },
+  {
+   "Program": "cmd/go",
+   "Version": "go1.23.1",
+   "GoVersion": "go1.23.1",
+   "GOOS": "linux",
+   "GOARCH": "amd64",
+   "Counters": {
+    "go/buildcache/hit": 5438,
+    "go/buildcache/miss": 36,
+    "go/goroot:usr-lib-go": 24,
+    "go/invocations": 24,
+    "go/mode:module": 24,
+    "go/platform/host/linux/major-version:6": 24,
+    "go/platform/host/linux/version:6-6": 24,
+    "go/platform/target/goamd64:v1": 24,
+    "go/platform/target/goarch:amd64": 24,
+    "go/platform/target/goos:linux": 24,
+    "go/subcommand:run": 24
+   },
+   "Stacks": {}
+  },
+  {
+   "Program": "cmd/link",
+   "Version": "go1.23.1",
+   "GoVersion": "go1.23.1",
+   "GOOS": "linux",
+   "GOARCH": "amd64",
+   "Counters": {
+    "link/flag:buildid": 13,
+    "link/flag:buildmode": 13,
+    "link/flag:extld": 13,
+    "link/flag:importcfg": 13,
+    "link/flag:o": 13,
+    "link/flag:s": 13,
+    "link/flag:w": 13,
+    "link/invocations": 26
+   },
+   "Stacks": {}
+  }
+ ],
+ "Config": "v0.0.0-0"
+}
