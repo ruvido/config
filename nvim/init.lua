@@ -1,47 +1,38 @@
+
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-  if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({
-      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
-      { "\nPress any key to exit..." },
-    }, true, {})
-    vim.fn.getchar()
-    os.exit(1)
-  end
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", "https://github.com/folke/lazy.nvim.git", lazypath })
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Set the leader key to space
-vim.g.mapleader = ' '
-vim.api.nvim_set_keymap('n', '<leader>yy', ':1,$y+<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<F12>', ':Neotree toggle<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>w', '<C-w>w', { noremap = true, silent = true })
-
--- Editor settings
+-- Leader key e impostazioni base
+vim.g.mapleader = " "
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
-vim.opt.syntax = 'enable'
 vim.opt.number = true
-vim.opt.mouse = 'a'
-vim.opt.clipboard = 'unnamedplus'
+vim.opt.mouse = "a"
+vim.opt.clipboard = "unnamedplus"
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
--- Plugin setup using lazy.nvim
+-- Plugin setup with lazy.nvim
 require("lazy").setup({
   -- Treesitter for syntax highlighting
-  {'nvim-treesitter/nvim-treesitter', build = ":TSUpdate"},
-  {'nvim-treesitter/tree-sitter-lua'},
+  {
+      "nvim-treesitter/nvim-treesitter",
+      build = ":TSUpdate",
+      opts = {
+          ensure_installed = { "dart" },
+          highlight = {
+              enable = true,
+              additional_vim_regex_highlighting = false,
+          }
+      }
+  },
 
-  -- Auto-save
-  {"Pocco81/auto-save.nvim"},
-
-  -- Neo-tree file explorer
+  -- Neo-tree for file exploration
   {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
@@ -52,132 +43,51 @@ require("lazy").setup({
     },
     config = function()
       require("neo-tree").setup({
-        window = {
-          width = 30,  -- Set the desired width here
-        },
+        window = { width = 30 },
       })
     end,
   },
 
-  -- Zen mode
-  {"folke/zen-mode.nvim", opts = { window = { backdrop = 1, width = 80, height = 0.8 } }},
+  -- Zen Mode for a distraction-free environment
+  { "folke/zen-mode.nvim", opts = { window = { backdrop = 1, width = 80, height = 0.8 } } },
 
-  -- Pencil for prose editing
-  {"preservim/vim-pencil"},
+  -- Pencil for improving Markdown editing
+  { "preservim/vim-pencil" },
 
-  -- Nordic theme
-  {'AlexvZyl/nordic.nvim'},
+  -- bullets.vim per la gestione automatica delle liste in Markdown
+  { "dkarter/bullets.vim" },
 
-  -- Pomodoro timer
-  {
-    "epwalsh/pomo.nvim",
-    version = "*",
-    lazy = true,
-    cmd = { "TimerStart", "TimerRepeat", "TimerSession" },
-    dependencies = {
-      "rcarriga/nvim-notify",
-    },
-    opts = {
-      sticky = false,
-      title_icon = "",
-      text_icon = "",
-    },
-  },
+  -- Nordic theme for a pleasant visual experience
+  { "AlexvZyl/nordic.nvim" },
 
-  -- Prose writing tools
+  -- Tools for a better writing experience in Markdown
   {
     "skwee357/nvim-prose",
     config = function()
       require("nvim-prose").setup({
         wpm = 200.0,
         filetypes = { "markdown", "asciidoc" },
-        placeholders = {
-          words = "words",
-          minutes = "min",
-        },
+        placeholders = { words = "words", minutes = "min" },
       })
     end,
   },
 
-  -- LSP and Flutter support
-  {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-cmdline",
-      "hrsh7th/nvim-cmp",
-    },
-    config = function()
-      -- Set up LSP for Dart/Flutter
-      local lspconfig = require("lspconfig")
-      lspconfig.dartls.setup({
-        cmd = { "dart", "language-server", "--protocol=lsp" },
-        init_options = {
-          closingLabels = true,
-          flutterOutline = true,
-          onlyAnalyzeProjectsWithOpenFiles = true,
-          outline = true,
-          suggestFromUnimportedLibraries = true,
-        },
-      })
+  -- Dart syntax highlighting base
+  { "dart-lang/dart-vim-plugin" },
 
-      -- Auto-completion setup
-      local cmp = require("cmp")
-      cmp.setup({
-        snippet = {
-          expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body)
-          end,
-        },
-        mapping = {
-          ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-          ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-          ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-          ['<C-y>'] = cmp.config.disable,
-          ['<C-e>'] = cmp.mapping({
-            i = cmp.mapping.abort(),
-            c = cmp.mapping.close(),
-          }),
-          ['<CR>'] = cmp.mapping.confirm({ select = true }),
-        },
-        sources = cmp.config.sources({
-          { name = 'nvim_lsp' },
-          { name = 'buffer' },
-          { name = 'path' },
-        }),
-      })
-
-      -- Keybindings for Flutter
-      vim.api.nvim_set_keymap('n', '<leader>fr', ':lua vim.lsp.buf.formatting()<CR>:lua vim.lsp.buf.code_action()<CR>', { noremap = true, silent = true })
-      vim.api.nvim_set_keymap('n', '<leader>fd', ':lua vim.lsp.buf.declaration()<CR>', { noremap = true, silent = true })
-      vim.api.nvim_set_keymap('n', '<leader>fq', ':lua vim.lsp.buf.hover()<CR>', { noremap = true, silent = true })
-    end,
-  },
 })
 
--- Set colorscheme
-vim.cmd [[colorscheme nordic]]
+-- Imposta il colorscheme
+vim.cmd("colorscheme nordic")
 
--- Zen mode and prose writing
-vim.api.nvim_set_keymap('n', '<leader>zz', ':ZenMode<CR>:PencilSoft<CR>', { noremap = true, silent = true })
+-- Keybindings
+vim.api.nvim_set_keymap("n", "<leader>yy", ":%y+<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<F12>", ":Neotree toggle<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>w", "<C-w>w", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>zz", ":ZenMode<CR>:PencilSoft<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>wc", ":lua print(require('nvim-prose').word_count() .. ' words, ' .. require('nvim-prose').reading_time() .. ' minutes')<CR>", { noremap = true, silent = true })
 
--- Pomodoro timer setup
-require("pomo").setup({
-  sessions = {
-    pomodoro = {
-      { name = "Work", duration = "25m" },
-      { name = "Short Break", duration = "5m" },
-      { name = "Work", duration = "25m" },
-      { name = "Short Break", duration = "5m" },
-      { name = "Work", duration = "25m" },
-      { name = "Long Break", duration = "15m" },
-    },
-  },
-})
-
--- Go templating language
+-- Configurazione specifica per HTML (es. template per Go)
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "html",
   callback = function()
@@ -185,6 +95,3 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.comments = "s1:/*,mb:*,ex:*/,://,://"
   end,
 })
-
--- Word count and reading time
-vim.api.nvim_set_keymap('n', '<leader>wc', ':lua print(require("nvim-prose").word_count() .. " words, " .. require("nvim-prose").reading_time() .. " minutes")<CR>', { noremap = true, silent = true })

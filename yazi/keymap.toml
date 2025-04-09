@@ -1,10 +1,13 @@
 # keymap.toml
+# [[manager.prepend_keymap]]
+# on   = "<C-p>"
+# run  = "shell 'for f in $@; do mplayer \"$f\" >/dev/null 2>&1 & done'"
+# desc = "Play selected audio files"
+# [[manager.prepend_keymap]]
+# on   = "<C-P>"
+# run  = "shell --block 'for f in $@; do mpv --no-terminal --no-video \"$f\" >/dev/null 2>&1 & done'"
+# desc = "Play selected audio files"
 [[manager.prepend_keymap]]
-on   = "o"
-run  = "plugin open-with-cmd --args=block"
-desc = "Open with command in the terminal"
-
-[[manager.prepend_keymap]]
-on   = "O"
-run  = "plugin open-with-cmd"
-desc = "Open with command"
+on   = "<C-p>"
+run  = "shell --block 'for ii in \"$@\"; do mplayer \"$ii\"; done'"
+desc = "Play selected audio files"

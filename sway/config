@@ -73,6 +73,12 @@ output * bg /home/ruvido/dwnl/878487.jpg fill
 #	middle_emulation enabled
 #}
 
+# # deadkeys
+# input * {
+#     xkb_layout us
+#     xkb_variant intl
+# }
+
 input * {
     xkb_layout "us,it"
     dwt enabled
